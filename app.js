@@ -5,7 +5,7 @@ const rlSync = require('readline-sync');
 const chalk = require('chalk');
 const gstring = require('gradient-string');
 
-console.log(gstring.atlas('DEVlog'));
+console.log(gstring.atlas('devLog'));
 
 let file = null, dev = {};
 //open file to read
