@@ -5,7 +5,15 @@ const rlSync = require('readline-sync');
 const chalk = require('chalk');
 const gstring = require('gradient-string');
 
-console.log(gstring.atlas('devLog'));
+let pad_ = () => {
+  let st = '';
+  for(let i = 0; i < (process.stdout.columns/2 -4); i++){
+    st += '_';
+  }
+  return st;
+}
+let head_str = pad_() + 'devLog' + pad_() + '\n';
+console.log(gstring.atlas(head_str));
 
 let file = null, dev = {};
 //open file to read
@@ -30,7 +38,7 @@ else {
   dev = JSON.parse(fs.readFileSync('devlog.json'));
 }
 
-if(argv._ == 'add'){
+if(argv.add || argv.a){
   console.log('Enter the description of task completed:');
   let desc = rlSync.prompt();
   let dt = new Date();
@@ -43,4 +51,9 @@ if(argv._ == 'add'){
   });
   fs.writeFileSync('devlog.json', JSON.stringify(dev))
 }
-
+else if(argv.help ||argv.h){
+  console.log('Use --add or -a to add tasks to the log. --help or -h for help');
+}
+else{
+  console.log('Invalid use of argument. Use --help or -h for help');
+}
