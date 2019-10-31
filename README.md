@@ -1,2 +1,2 @@
 # devLog
-A CLI log to maintain tasks performed in a day to keep record.
+A CLI logger which maintains the tasks performed in a day to keep record.
